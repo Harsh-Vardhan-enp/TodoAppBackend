@@ -12,6 +12,9 @@ from settings import DATABASE_URL
 from model.user import User
 from model.todos import Todos
 from model.log import Log
+from model.group import Group
+from model.group_members import GroupMember
+from model.invites import Invites
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 

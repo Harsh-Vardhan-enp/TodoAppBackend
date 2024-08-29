@@ -8,6 +8,7 @@ class Todos(Base):
     agenda = Column(String(100), nullable=False)
     description = Column(String(200), nullable=True)
     created_by = Column(Integer, ForeignKey('user.id'), nullable=False)
+    group_id = Column(Integer, ForeignKey('group.id'), nullable=False)
     assigned_to = Column(Integer, ForeignKey('user.id'), nullable=False)
     is_completed = Column(Boolean, default=False)
 

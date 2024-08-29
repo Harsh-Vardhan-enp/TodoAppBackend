@@ -4,10 +4,14 @@ from pydantic import BaseModel, EmailStr, Field
 class TodosBaseSchema(BaseModel):
     agenda: str
     description: str
+    group_id: int
 
 
 class CreateTodosSchema(TodosBaseSchema):
     assigned_to: int
+
+class CompleteTodoSchema(BaseModel):
+    id:int
 
 class Todoschema(TodosBaseSchema):
     id: int

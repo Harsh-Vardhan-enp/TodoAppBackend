@@ -1,5 +1,5 @@
-from typing import Union
-from fastapi import HTTPException, status
+from typing import Annotated, Union
+from fastapi import HTTPException, Header, status
 from fastapi import HTTPException
 import jwt
 from src.settings import SECRET_KEY
@@ -13,3 +13,6 @@ def verify_token(token: str) -> Union[str, None]:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token has expired")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    
+def token_middleware(Authorization: Annotated[str, Header()]):
+    return verify_token(token=Authorization.split(' ')[1])
